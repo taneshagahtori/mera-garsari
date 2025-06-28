@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/Users/macbookpro/Desktop/garsari 1/app/layout\":[\"static/media/baa020e15443c7c9-s.p.woff2\",\"static/media/ef46db3751d8e999-s.p.woff2\",\"static/media/ef46db3751d8e999-s.p.woff2\",\"static/media/ef46db3751d8e999-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"
