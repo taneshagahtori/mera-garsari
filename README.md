@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Garsari Logo](public/mera-garsari.png)
+![Garsari Logo](public/mera-garsari.svg)
 
 **Discover the hidden gem of Uttarakhand**
 
