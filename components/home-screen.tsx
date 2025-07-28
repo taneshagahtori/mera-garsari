@@ -1,5 +1,7 @@
 "use client"
 
+import { useRouter } from "next/navigation"
+
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
@@ -18,6 +20,7 @@ import village from "@/public/pexels-shaurya-malik-322465-954646.jpg"
 
 
 const backgroundImages = [valley, temple, mountains, village]
+
 
 
 export function HomeScreen() {
@@ -88,12 +91,15 @@ export function HomeScreen() {
     },
   ]
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (searchQuery.trim()) {
-      console.log("Searching for:", searchQuery)
-    }
+  
+const router = useRouter()
+const handleSearch = (e: React.FormEvent) => {
+  e.preventDefault()
+  const trimmed = searchQuery.trim()
+  if (trimmed) {
+    router.push(`/search?q=${encodeURIComponent(trimmed)}`)
   }
+}
 
   return (
     <div className="flex flex-col min-h-screen bg-neutral-50 bg-pattern-dots">
@@ -101,12 +107,13 @@ export function HomeScreen() {
 
       <main className="flex-1 overflow-auto pb-16">
         {/* Hero Section with Search */}
-        <div className="relative h-[60vh] min-h-[600px]">
+        <div className="relative h-[80vh] sm:h-[70vh] md:h-[60vh] min-h-[500px] md:min-h-[600px]">
           {/* Background Images */}
           <div className="absolute inset-0">
             {backgroundImages.map((image, index) => (
               <div
-                key={image}
+                key={image.src}
+
                 className={`absolute inset-0 transition-opacity duration-1000 ${
                   index === currentImageIndex ? "opacity-100" : "opacity-0"
                 }`}
@@ -127,10 +134,10 @@ export function HomeScreen() {
           {/* Content */}
           <div className="relative h-full flex flex-col items-center justify-center p-6 text-white">
             <div className="text-center max-w-3xl mx-auto">
-              <h1 className="text-6xl font-heading mb-6 text-center drop-shadow-lg animate-fade-in">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-heading mb-4 md:mb-6 text-center drop-shadow-lg animate-fade-in px-4">
                 {t("app.name")}
               </h1>
-              <p className="text-xl font-accent mb-10 text-center drop-shadow-md animate-fade-in-delay">
+              <p className="text-base sm:text-lg md:text-xl font-accent mb-8 md:mb-10 text-center drop-shadow-md animate-fade-in-delay px-4">
                 {t("app.tagline")}
               </p>
               <form onSubmit={handleSearch} className="w-full max-w-xl mx-auto animate-fade-in-delay-2">
@@ -161,10 +168,11 @@ export function HomeScreen() {
         {/* Main Content Grid */}
         <div className="max-w-7xl mx-auto px-4 py-8">
           {/* Quick Navigation */}
-          <div className="grid grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12 px-2 sm:px-0">
             <Link href="/regions" className="group">
-              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-neutral-200">
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-brand-primary to-brand-secondary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div className="h-full flex flex-col justify-between bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-neutral-200 min-h-[160px]">
+
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-brand-primary to-brand-secondary flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
                   <Map className="h-6 w-6 text-white" />
                 </div>
                 <h3 className="text-lg font-heading text-neutral-800 mb-1">{t("nav.regions")}</h3>
@@ -172,7 +180,8 @@ export function HomeScreen() {
               </div>
             </Link>
             <Link href="/families" className="group">
-              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-neutral-200">
+            <div className="h-full flex flex-col justify-between bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-neutral-200 min-h-[160px]">
+
                 <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-brand-success to-brand-info flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Users className="h-6 w-6 text-white" />
                 </div>
@@ -181,7 +190,8 @@ export function HomeScreen() {
               </div>
             </Link>
             <Link href="/blogs" className="group">
-              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-neutral-200">
+            <div className="h-full flex flex-col justify-between bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-neutral-200 min-h-[160px]">
+
                 <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-brand-accent to-brand-secondary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <BookOpen className="h-6 w-6 text-white" />
                 </div>
@@ -190,7 +200,8 @@ export function HomeScreen() {
               </div>
             </Link>
             <Link href="/events" className="group">
-              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-neutral-200">
+            <div className="h-full flex flex-col justify-between bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-neutral-200 min-h-[160px]">
+
                 <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-brand-warning to-brand-error flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Calendar className="h-6 w-6 text-white" />
                 </div>
@@ -201,21 +212,21 @@ export function HomeScreen() {
           </div>
 
           {/* Two Column Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 px-4 sm:px-6">
             {/* Left Column - Featured Places */}
-            <div className="lg:col-span-2">
-              <div className="flex justify-between items-center mb-6">
+            <div className="lg:col-span-2 mb-8 lg:mb-0">
+              <div className="flex justify-between items-center mb-4 sm:mb-6">
                 <h2 className="text-2xl font-heading text-neutral-800">{t("home.featuredPlaces")}</h2>
                 <Link href="/places" className="text-sm text-brand-primary font-accent flex items-center hover:text-brand-secondary transition-colors">
                   {t("home.viewAll")} <ChevronRight className="h-4 w-4 ml-1" />
                 </Link>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {featuredPlaces.map((place) => (
                   <Link href={`/places/${place.id}`} key={place.id} className="group">
                     <Card className="overflow-hidden border border-neutral-200 shadow-sm hover:shadow-md transition-all duration-300 h-full bg-white/80 backdrop-blur-sm">
-                      <div className="relative h-48">
+                      <div className="relative h-40 sm:h-48">
                         <Image src={place.image || "/placeholder.svg"} alt={place.name} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                       </div>
@@ -240,14 +251,14 @@ export function HomeScreen() {
             <div className="space-y-8">
               {/* Upcoming Events */}
               <div>
-                <div className="flex justify-between items-center mb-4">
+                <div className="flex justify-between items-center mb-3 sm:mb-4">
                   <h2 className="text-xl font-heading text-neutral-800">{t("home.upcomingEvents")}</h2>
                   <Link href="/events" className="text-sm text-brand-primary font-accent flex items-center hover:text-brand-secondary transition-colors">
                     {t("home.viewAll")} <ChevronRight className="h-4 w-4 ml-1" />
                   </Link>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {upcomingEvents.map((event) => (
                     <Card key={event.id} className="overflow-hidden border border-neutral-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white/80 backdrop-blur-sm">
                       <CardContent className="p-4">
@@ -269,14 +280,14 @@ export function HomeScreen() {
 
               {/* Recent Blogs */}
               <div>
-                <div className="flex justify-between items-center mb-4">
+                <div className="flex justify-between items-center mb-3 sm:mb-4">
                   <h2 className="text-xl font-heading text-neutral-800">{t("home.recentBlogs")}</h2>
                   <Link href="/blogs" className="text-sm text-brand-primary font-accent flex items-center hover:text-brand-secondary transition-colors">
                     {t("home.viewAll")} <ChevronRight className="h-4 w-4 ml-1" />
                   </Link>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {recentBlogs.map((blog) => (
                     <Link href={`/blogs/${blog.id}`} key={blog.id} className="block">
                       <Card className="overflow-hidden border border-neutral-200 shadow-sm hover:shadow-md transition-all duration-300 bg-white/80 backdrop-blur-sm">
