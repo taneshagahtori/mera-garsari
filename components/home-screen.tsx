@@ -9,13 +9,16 @@ import { Card, CardContent } from "@/components/ui/card"
 import { AppHeader } from "@/components/app-header"
 import { BottomNavigation } from "@/components/bottom-navigation"
 import { useLanguage } from "@/lib/i18n/language-context"
+import image from "@/public/placeholder.jpg"
 
-const backgroundImages = [
-  "/images/uttarakhand/valley.jpg",
-  "/images/uttarakhand/temple.jpg",
-  "/images/uttarakhand/mountains.jpg",
-  "/images/uttarakhand/village.jpg",
-]
+import valley from "@/public/pexels-byrahul-1155084.jpg"
+import temple from "@/public/pexels-gokul-gurang-224181659-16546692.jpg"
+import mountains from "@/public/pexels-satyabrata-maiti-258455945-31770953.jpg"
+import village from "@/public/pexels-shaurya-malik-322465-954646.jpg"
+
+
+const backgroundImages = [valley, temple, mountains, village]
+
 
 export function HomeScreen() {
   const [activeTab, setActiveTab] = useState("home")
@@ -115,7 +118,7 @@ export function HomeScreen() {
                   className="object-cover"
                   priority={index === 0}
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/80 via-brand-secondary/70 to-brand-accent/60" />
+                <div className="absolute " />
                 <div className="absolute inset-0 bg-pattern-grid opacity-10" />
               </div>
             ))}

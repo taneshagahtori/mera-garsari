@@ -1,5 +1,6 @@
 "use client"
 
+
 import type React from "react"
 
 import { useState } from "react"
@@ -8,7 +9,8 @@ import { Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { useRouter } from "next/navigation"
 import { useLanguage } from "@/lib/i18n/language-context"
-
+import logo from "@/public/mera-garsari.svg"
+ 
 export function AppHeader() {
   const [searchQuery, setSearchQuery] = useState("")
   const router = useRouter()
@@ -27,7 +29,7 @@ export function AppHeader() {
         <div className="flex items-center">
           <div className="w-10 h-10 relative mr-2">
             <Image
-              src="/placeholder.svg?height=40&width=40"
+              src={logo}
               alt="Mera Garsari Logo"
               width={40}
               height={40}

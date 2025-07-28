@@ -98,7 +98,7 @@ export const translations: Record<Language, Record<TranslationKey, string>> = {
     "settings.appDesc":
       "Mera Garsari is dedicated to preserving and sharing the rich cultural heritage, history, and community information of Garsari, Uttarakhand.",
     "settings.version": "Version: 1.0.0",
-    "settings.developer": "Developed by: Garsari Community Development Team",
+    "settings.developer": "Developed by: Tanesha Gahtori",
     "addContent.title": "Add New Content",
     "addContent.subtitle": "Share your stories, poems, photos, and more with the Garsari community",
     "addContent.blog": "Blog",
